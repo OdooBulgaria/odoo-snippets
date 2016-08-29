@@ -1,0 +1,200 @@
+global !p
+def complete(t, opts):
+    if t:
+        opts = [m[len(t):] for m in opts if m.startswith(t)]
+    if len(opts) == 1:
+        return opts[0]
+    return '({0:s})'.format('|'.join(opts))
+
+def cleanup_field_string(t):
+    import re
+    return re.sub(r'(id|ids)$', '', t).replace('_', ' ').rstrip(' ').title()
+endglobal
+
+snippet bool "Boolean field"
+${1:field} = fields.Boolean(
+    string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',$0
+)
+endsnippet
+
+snippet char "Char field"
+${1:field} = fields.Char(
+    string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',
+    help='',
+    size=False,
+    translate=False,$0
+)
+endsnippet
+
+snippet text "Text field"
+${1:field} = fields.Text(
+    string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',
+    help='',
+    translate=False,$0
+)
+endsnippet
+
+snippet html "HTML field"
+${1:field} = fields.Html(
+    string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',
+    help=''$0,
+)
+endsnippet
+
+snippet date "Date field"
+${1:field} = fields.Date(
+    string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',
+    help=''$0,
+)
+endsnippet
+snippet int "Integer field"
+${1:field} = fields.Integer(
+    string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',$0
+)
+endsnippet
+
+snippet integer "Integer field"
+${1:field} = fields.Integer(
+    string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',$0
+)
+endsnippet
+snippet float "Float field"
+from openerp.addons import decimal_precision as dp$0
+${1:field} = fields.Float(
+    string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',
+	digits=dp.get_precision('${3:Account}'),
+)
+endsnippet
+
+snippet selection "Selection field"
+${1:field} = fields.Selection(
+    string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',
+	selection=[('${3:value}', '${4:`!p snip.rv = t[3].title()`}')$0])
+)
+endsnippet
+
+snippet selection_add
+${1:field} = fields.Selection(
+	string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',
+	selection_add=[('${3:value}', '${4:`!p snip.rv = t[3].title()`}')$0]
+)
+endsnippet
+
+snippet related "Related field"
+${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Boolean','Selection','Char','Text','Html','Integer','Float','Many2one','One2many','Many2many'])`(
+    related='$3.$1',
+    string='${4:`!p snip.rv = cleanup_field_string(t[1])`}',
+    store=False$0,
+)
+endsnippet
+
+snippet m2o "Many2one field"
+${1:field} = fields.Many2one(
+	comodel_name='${2:model}',
+    string='${3:`!p snip.rv = cleanup_field_string(t[1])`}',
+	ondelete='set null',$0
+)
+endsnippet
+
+snippet o2m "One2many field"
+${1:field} = fields.One2many(
+	comodel_name='${2:model}',
+	inverse_name='${3:field}',
+	string='${4:`!p snip.rv = cleanup_field_string(t[1])`}',$0
+)
+endsnippet
+
+snippet m2m "Many2many field"
+${1:field} = fields.Many2many(
+	comodel_name='${2:model}',
+	string='${3:`!p snip.rv = cleanup_field_string(t[1])`}',$0
+)
+endsnippet
+
+snippet compute "Compute field"
+${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Boolean','Selection','Char','Text','Html','Integer','Float','Many2one','One2many','Many2many'])`(compute='_compute_$1')
+
+@api.depends('${3:field}')
+def _compute_$1(self):
+    for record in self:
+        record.$1 = $0
+endsnippet
+
+snippet onchange "Onchange handler"
+@api.onchange('${1:field}')
+def _onchange_$1(self):
+	self.${2:other} = $0
+endsnippet
+
+
+snippet constrain "Python constrain"
+from openerp import _, api, exceptions$0
+
+@api.one
+@api.constrains('${1:field}')
+def _check_$1(self):
+    if self.$1 == ${2:value}:
+        raise exceptions.ValidationError(_('${3:Error}'))
+endsnippet
+
+snippet constraint "Python constrain"
+from openerp import _, api, exceptions$0
+
+@api.one
+@api.constrains('${1:field}')
+def _check_$1(self):
+    if self.$1 == ${2:value}:
+        raise exceptions.ValidationError(_('${3:Error}'))
+endsnippet
+
+snippet constrains "Python constrain"
+from openerp import _, api, exceptions$0
+
+@api.one
+@api.constrains('${1:field}')
+def _check_$1(self):
+    if self.$1 == ${2:value}:
+        raise exceptions.ValidationError(_('${3:Error}'))
+endsnippet
+
+
+snippet model "New model"
+class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.Model):
+	_name = '${1:base_model}'
+	_description = '$3`!p snip.rv = t[1].replace('.', ' ').title()`'
+
+	$0
+endsnippet
+
+snippet inherit "Model inheritance"
+class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.Model):
+	_inherit = '${1:base_model}'
+
+	$0
+endsnippet
+
+snippet controller "Basic HTTP controller"
+from openerp import http
+from openerp.http import request
+
+
+class ${1:Controller}(http.Controller):
+
+    @http.route('/${2:index}', type='$4`!p snip.rv = complete(t[4], ['http','json'])`', auth='$5`!p snip.rv = complete(t[5], ['user','public','none'])`')
+    def $3`!p snip.rv = t[2].replace('/', '_')`(self, *args, **kwargs):
+        return request.render($0)
+endsnippet
+
+snippet multi "@api.multi method"
+@api.multi
+def ${1:method}(self, ${2:args}):
+	for rec in self:
+		$0
+endsnippet
+
+snippet one "@api.one method"
+@api.multi
+def ${1:method}(self, ${2:args}):
+	self.ensure_one()
+	$0
+endsnippet

@@ -1,0 +1,287 @@
+global !p
+def complete(t, opts):
+	if t:
+		opts = [m[len(t):] for m in opts if m.startswith(t)]
+	if len(opts) == 1:
+		return opts[0]
+	return '({0:s})'.format('|'.join(opts))
+endglobal
+
+snippet xml "Odoo v8/OpenERP XML file"
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		$0
+	</data>
+</openerp>
+endsnippet
+
+snippet xml9 "Odoo v9 XML file"
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		$0
+	</data>
+</odoo>
+endsnippet
+
+snippet data "Data tag"
+<data>
+	$0
+</data>
+endsnippet
+snippet act "Action record"
+<record id="action_`!p snip.rv = t[1].lower().replace(' ', '_')`" model="ir.actions.act_window">
+	<field name="name">${1:Name}</field>
+	<field name="res_model">${2:model}</field>
+	<field name="view_mode">tree,form</field>
+	<field name="help" type="html">
+		<p class="oe_view_nocontent_create">
+			<!-- Add Text Here -->
+			$0
+		</p>
+		<p>
+			<!-- More details about what a user can do -->
+		</p>
+	</field>
+</record>
+endsnippet
+
+snippet action "Action record"
+<record id="action_`!p snip.rv = t[1].lower().replace(' ', '_')`" model="ir.actions.act_window">
+	<field name="name">${1:Name}</field>
+	<field name="res_model">${2:model}</field>
+	<field name="view_mode">tree,form</field>
+	<field name="help" type="html">
+		<p class="oe_view_nocontent_create">
+			<!-- Add Text Here -->
+			$0
+		</p>
+		<p>
+			<!-- More details about what a user can do -->
+		</p>
+	</field>
+</record>
+endsnippet
+snippet form "Form view"
+<record id="view_${2:`!p snip.rv = t[1].replace('.', '_')`}_form" model="ir.ui.view">
+	<field name="name">$1.form</field>
+	<field name="model">${1:model}</field>
+	<field name="arch" type="xml">
+		<form string="${3:`!p snip.rv = t[1].replace('.', ' ').replace('_', ' ').title()`}">
+			$0
+		</form>
+	</field>
+</record>
+endsnippet
+
+snippet tree "Tree view"
+<record id="view_${2:`!p snip.rv = t[1].replace('.', '_')`}_tree" model="ir.ui.view">
+	<field name="name">$1.tree</field>
+	<field name="model">${1:model}</field>
+	<field name="arch" type="xml">
+		<tree editable="$3`!p snip.rv = complete(t[3], ['top', 'bottom'])`">
+			$0
+		</tree>
+	</field>
+</record>
+endsnippet
+snippet inherit "Form view inheritance"
+<record id="${3:`!p snip.rv = t[2].partition('.')[2]`}_inherit" model="ir.ui.view">
+	<field name="model">${1:model}</field>
+	<field name="inherit_id" ref="${2:parent_view}"/>
+	<field name="arch" type="xml">
+		$0
+	</field>
+</record>
+endsnippet
+
+snippet finherit "Form view inheritance"
+<record id="${3:`!p snip.rv = t[2].partition('.')[2]`}_inherit" model="ir.ui.view">
+	<field name="model">${1:model}</field>
+	<field name="inherit_id" ref="${2:parent_view}"/>
+	<field name="arch" type="xml">
+		$0
+	</field>
+</record>
+endsnippet
+
+snippet form_inherit "Form view inheritance"
+<record id="${3:`!p snip.rv = t[2].partition('.')[2]`}_inherit" model="ir.ui.view">
+	<field name="model">${1:model}</field>
+	<field name="inherit_id" ref="${2:parent_view}"/>
+	<field name="arch" type="xml">
+		$0
+	</field>
+</record>
+endsnippet
+snippet xpath "XPath selector tag"
+<xpath expr="${1://}" position="$2`!p snip.rv = complete(t[2], ['inside', 'replace', 'after', 'before', 'attributes'])`">
+	$0
+</xpath>
+endsnippet
+snippet menu "Menu record shortcut"
+<menuitem id="${2:`!p snip.rv = 'menu_' + t[1].lower().replace(' ', '_')`}"
+	name="${1:name}"
+	action="${3}"
+	groups="${4}"
+	parent="${5:xml_id}"
+/>
+endsnippet
+
+snippet menuitem "Menu record shortcut"
+<menuitem id="${2:`!p snip.rv = 'menu_' + t[1].lower().replace(' ', '_')`}"
+	name="${1:name}"
+	action="${3}"
+	groups="${4}"
+	parent="${5:xml_id}"
+/>
+endsnippet
+
+snippet gr "Group tag"
+<group>
+	$0
+</group>
+endsnippet
+
+snippet group "Group tag"
+<group>
+	$0
+</group>
+endsnippet
+
+snippet nb "Notebook"
+<notebook>
+	<page string="${1:Name}">
+		$0
+	</page>
+</notebook>
+endsnippet
+
+snippet notebook "Notebook"
+<notebook>
+	<page string="${1:Name}">
+		$0
+	</page>
+</notebook>
+endsnippet
+
+snippet pg "Page tag"
+<page string="${1:Name}">
+	$0
+</page>
+endsnippet
+
+snippet page "Page tag"
+<page string="${1:Name}">
+	$0
+</page>
+endsnippet
+snippet pdb "QWeb PDB debugger"
+<t t-debug="pdb"/>$0
+endsnippet
+
+snippet report "QWeb Report Shortcut Record"
+<report
+	id="report_${2:`!p snip.rv = t[1].replace('.', '_') `}"
+	model="${1:model}"
+	string="${3:String}"
+	report_type="$4`!p snip.rv = complete(t[4], ['qweb-pdf', 'qweb-html'])`"
+	name="$5"
+	file="${5}"
+/>
+$0
+endsnippet
+snippet call "t-call tag"
+<t t-call="${1:template}">
+	$0
+</t>
+endsnippet
+
+snippet tcall "t-call tag"
+<t t-call="${1:template}">
+	$0
+</t>
+endsnippet
+
+snippet set "t-set tag"
+<t t-set="${1}" t-value="${2}"/>
+$0
+endsnippet
+
+snippet tset "t-set tag"
+<t t-set="${1}" t-value="${2}"/>
+$0
+endsnippet
+
+snippet tif "t if snippet"
+<t t-if="${1:condition}">
+	$0
+</t>
+endsnippet
+
+snippet pif "p if snippet"
+<p t-if="${1:condition}">
+	$0
+</p>
+endsnippet
+
+snippet dif "div if snippet"
+<div t-if="${1:condition}">
+	$0
+</div>
+endsnippet
+
+snippet sif "span if snippet"
+<span t-if="${1:condition}">
+	$0
+</span>
+endsnippet
+
+snippet lif "li if snippet"
+<li t-if="${1:condition}">
+	$0
+</li>
+endsnippet
+
+snippet aif "a if snippet"
+<a t-if="${1:condition}">
+	$0
+</a>
+endsnippet
+
+snippet tfor "t for snippet"
+<t t-foreach="${1:haystack}" t-as="${2:needle}">
+	$0
+</t>
+endsnippet
+
+snippet pfor "p for snippet"
+<p t-foreach="${1:haystack}" t-as="${2:needle}">
+	$0
+</p>
+endsnippet
+
+snippet dfor "div for snippet"
+<div t-foreach="${1:haystack}" t-as="${2:needle}">
+	$0
+</div>
+endsnippet
+
+snippet sfor "span for snippet"
+<span t-foreach="${1:haystack}" t-as="${2:needle}">
+	$0
+</span>
+endsnippet
+
+snippet lfor "li for snippet"
+<li t-foreach="${1:haystack}" t-as="${2:needle}">
+	$0
+</li>
+endsnippet
+
+snippet afor "a for snippet"
+<a t-foreach="${1:haystack}" t-as="${2:needle}">
+	$0
+</a>
+endsnippet
