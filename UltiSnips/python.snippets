@@ -185,6 +185,12 @@ class ${1:Controller}(http.Controller):
         return request.render($0)
 endsnippet
 
+snippet route "HTTP route method"
+@http.route('/${1:index}', type='$3`!p snip.rv = complete(t[3], ['http','json'])`', auth='$4`!p snip.rv = complete(t[4], ['user','public','none'])`')
+def $2`!p snip.rv = t[1].replace('/', '_')`(self, *args, **kwargs):
+    return request.render($0)
+endsnippet
+
 snippet multi "@api.multi method"
 @api.multi
 def ${1:method}(self, ${2:args}):
