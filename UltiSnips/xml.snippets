@@ -285,3 +285,63 @@ snippet afor "a for snippet"
 	$0
 </a>
 endsnippet
+
+snippet tfield "t field tag"
+<t t-field="${1:field}"$0/>
+endsnippet
+
+snippet pfield "p field tag"
+<p t-field="${1:field}"$0/>
+endsnippet
+
+snippet dfield "div field tag"
+<div t-field="${1:field}"$0/>
+endsnippet
+
+snippet sfield "span field tag"
+<span t-field="${1:field}"$0/>
+endsnippet
+
+snippet lfield "li field tag"
+<li t-field="${1:field}"$0/>
+endsnippet
+
+snippet afield "a field tag"
+<a t-field="${1:field}"$0/>
+endsnippet
+
+snippet tesc "t escaped tag"
+<t t-esc="${1:value}"$0/>
+endsnippet
+
+snippet pesc "p escaped tag"
+<p t-esc="${1:value}"$0/>
+endsnippet
+
+snippet desc "div escaped tag"
+<div t-esc="${1:value}"$0/>
+endsnippet
+
+snippet sesc "span escaped tag"
+<span t-esc="${1:value}"$0/>
+endsnippet
+
+snippet lesc "li escaped tag"
+<li t-esc="${1:value}"$0/>
+endsnippet
+
+snippet aesc "a escaped tag"
+<a t-esc="${1:value}"$0/>
+endsnippet
+
+snippet tpl "QWeb template"
+<template id="${2:`!p snip.rv = t[1].lower().replace(' ', '_')`}" name="${1:name}">
+    $0
+</template>
+endsnippet
+
+snippet template "QWeb template"
+<template id="${2:`!p snip.rv = t[1].lower().replace(' ', '_')`}" name="${1:name}">
+    $0
+</template>
+endsnippet
