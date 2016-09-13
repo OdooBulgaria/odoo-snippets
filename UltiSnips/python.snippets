@@ -11,6 +11,97 @@ def cleanup_field_string(t):
     return re.sub(r'(id|ids)$', '', t).replace('_', ' ').rstrip(' ').title()
 endglobal
 
+snippet doc "Module top-level doc"
+# -*- coding: utf-8 -*-
+# This file is part of Odoo. The COPYRIGHT file at the top level of
+# this module contains the full copyright notices and license terms.
+$0
+endsnippet
+snippet __openerp__ "Odoo module manifest"
+{
+    'name': '${1:Name}',
+    'category': '$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])`',
+    'summary': '${3:Summary}',
+    'version': '8.0.0.1.0',
+    'author': '${4:Author}',
+    'depends': ['${5}'],
+    'data': [
+        '$0',
+    ],
+    'installable': True,
+    'application': False,
+}
+endsnippet
+
+snippet __oe__ "Odoo module manifest"
+{
+    'name': '${1:Name}',
+    'category': '$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])`',
+    'summary': '${3:Summary}',
+    'version': '8.0.0.1.0',
+    'author': '${4:Author}',
+    'depends': ['${5}'],
+    'data': [
+        '$0',
+    ],
+    'installable': True,
+    'application': False,
+}
+endsnippet
+
+snippet __oe "Odoo module manifest"
+{
+    'name': '${1:Name}',
+    'category': '$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])`',
+    'summary': '${3:Summary}',
+    'version': '8.0.0.1.0',
+    'author': '${4:Author}',
+    'depends': ['${5}'],
+    'data': [
+        '$0',
+    ],
+    'installable': True,
+    'application': False,
+}
+endsnippet
+
+snippet __openerp "Odoo module manifest"
+{
+    'name': '${1:Name}',
+    'category': '$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])`',
+    'summary': '${3:Summary}',
+    'version': '8.0.0.1.0',
+    'author': '${4:Author}',
+    'depends': ['${5}'],
+    'data': [
+        '$0',
+    ],
+    'installable': True,
+    'application': False,
+}
+endsnippet
+
+snippet manifest "Odoo module manifest"
+{
+    'name': '${1:Name}',
+    'category': '$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])`',
+    'summary': '${3:Summary}',
+    'version': '8.0.0.1.0',
+    'author': '${4:Author}',
+    'depends': ['${5}'],
+    'data': [
+        '$0',
+    ],
+    'installable': True,
+    'application': False,
+}
+endsnippet
+snippet data "Odoo manifest data key"
+'data': [
+    '$0',
+],
+endsnippet
+
 snippet bool "Boolean field"
 ${1:field} = fields.Boolean(
     string='${2:`!p snip.rv = cleanup_field_string(t[1])`}',$0
