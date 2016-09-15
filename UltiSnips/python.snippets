@@ -7,7 +7,6 @@ def complete(t, opts):
     return '({0:s})'.format('|'.join(opts))
 
 def cleanup_field_string(t):
-    import re
     return re.sub(r'(id|ids)$', '', t).replace('_', ' ').rstrip(' ').title()
 endglobal
 
@@ -183,7 +182,7 @@ snippet m2o "Many2one field"
 ${1:field} = fields.Many2one(
 	comodel_name='${2:model}',
     string='${3:`!p snip.rv = cleanup_field_string(t[1])`}',
-	ondelete='set null',$0
+	ondelete='$4`!p snip.rv = complete(t[4], ['set null','restrict','cascade'])`',$0
 )
 endsnippet
 
