@@ -20,13 +20,13 @@ def cleanup_field_string(t):
     return re.sub(r'(id|ids)$', '', t).replace('_', ' ').rstrip(' ').title()
 endglobal
 
-snippet doc "Module top-level doc"
+snippet doc "Module top-level doc" b
 # -*- coding: utf-8 -*-
 # This file is part of Odoo. The COPYRIGHT file at the top level of
 # this module contains the full copyright notices and license terms.
 $0
 endsnippet
-snippet __openerp__ "Odoo module manifest"
+snippet __openerp__ "Odoo module manifest" b
 {
     `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
     `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
@@ -42,7 +42,7 @@ snippet __openerp__ "Odoo module manifest"
 }
 endsnippet
 
-snippet __oe__ "Odoo module manifest"
+snippet __oe__ "Odoo module manifest" b
 {
     `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
     `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
@@ -58,7 +58,7 @@ snippet __oe__ "Odoo module manifest"
 }
 endsnippet
 
-snippet __oe "Odoo module manifest"
+snippet __oe "Odoo module manifest" b
 {
     `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
     `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
@@ -74,7 +74,7 @@ snippet __oe "Odoo module manifest"
 }
 endsnippet
 
-snippet __openerp "Odoo module manifest"
+snippet __openerp "Odoo module manifest" b
 {
     `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
     `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
@@ -90,7 +90,7 @@ snippet __openerp "Odoo module manifest"
 }
 endsnippet
 
-snippet manifest "Odoo module manifest"
+snippet manifest "Odoo module manifest" b
 {
     `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
     `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
@@ -105,19 +105,19 @@ snippet manifest "Odoo module manifest"
     `!p snip.rv = get_quoting_style(snip)`application`!p snip.rv = get_quoting_style(snip)`: False,
 }
 endsnippet
-snippet data "Odoo manifest data key"
+snippet data "Odoo manifest data key" b
 `!p snip.rv = get_quoting_style(snip)`data`!p snip.rv = get_quoting_style(snip)`: [
     `!p snip.rv = get_quoting_style(snip)`$0`!p snip.rv = get_quoting_style(snip)`,
 ],
 endsnippet
 
-snippet bool "Boolean field"
+snippet bool "Boolean field" b
 ${1:field} = fields.Boolean(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,$0
 )
 endsnippet
 
-snippet char "Char field"
+snippet char "Char field" b
 ${1:field} = fields.Char(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
     help=`!p snip.rv = get_quoting_style(snip)``!p snip.rv = get_quoting_style(snip)`,
@@ -126,7 +126,7 @@ ${1:field} = fields.Char(
 )
 endsnippet
 
-snippet text "Text field"
+snippet text "Text field" b
 ${1:field} = fields.Text(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
     help=`!p snip.rv = get_quoting_style(snip)``!p snip.rv = get_quoting_style(snip)`,
@@ -134,31 +134,31 @@ ${1:field} = fields.Text(
 )
 endsnippet
 
-snippet html "HTML field"
+snippet html "HTML field" b
 ${1:field} = fields.Html(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
     help=`!p snip.rv = get_quoting_style(snip)``!p snip.rv = get_quoting_style(snip)`$0,
 )
 endsnippet
 
-snippet date "Date field"
+snippet date "Date field" b
 ${1:field} = fields.Date(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
     help=`!p snip.rv = get_quoting_style(snip)``!p snip.rv = get_quoting_style(snip)`$0,
 )
 endsnippet
-snippet int "Integer field"
+snippet int "Integer field" b
 ${1:field} = fields.Integer(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,$0
 )
 endsnippet
 
-snippet integer "Integer field"
+snippet integer "Integer field" b
 ${1:field} = fields.Integer(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,$0
 )
 endsnippet
-snippet float "Float field"
+snippet float "Float field" b
 from openerp.addons import decimal_precision as dp$0
 ${1:field} = fields.Float(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
@@ -166,21 +166,21 @@ ${1:field} = fields.Float(
 )
 endsnippet
 
-snippet selection "Selection field"
+snippet selection "Selection field" b
 ${1:field} = fields.Selection(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
 	selection=[(`!p snip.rv = get_quoting_style(snip)`${3:value}`!p snip.rv = get_quoting_style(snip)`, `!p snip.rv = get_quoting_style(snip)`${4:`!p snip.rv = t[3].title()`}`!p snip.rv = get_quoting_style(snip)`)$0])
 )
 endsnippet
 
-snippet selection_add
+snippet selection_add "Selection field extension with an additional value" b
 ${1:field} = fields.Selection(
 	string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
 	selection_add=[(`!p snip.rv = get_quoting_style(snip)`${3:value}`!p snip.rv = get_quoting_style(snip)`, `!p snip.rv = get_quoting_style(snip)`${4:`!p snip.rv = t[3].title()`}`!p snip.rv = get_quoting_style(snip)`)$0]
 )
 endsnippet
 
-snippet related "Related field"
+snippet related "Related field" b
 ${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Boolean','Selection','Char','Text','Html','Integer','Float','Many2one','One2many','Many2many'])`(
     related=`!p snip.rv = get_quoting_style(snip)`$3.$1`!p snip.rv = get_quoting_style(snip)`,
     string=`!p snip.rv = get_quoting_style(snip)`${4:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
@@ -188,7 +188,7 @@ ${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Boolean','Selection','Char'
 )
 endsnippet
 
-snippet m2o "Many2one field"
+snippet m2o "Many2one field" b
 ${1:field} = fields.Many2one(
 	comodel_name=`!p snip.rv = get_quoting_style(snip)`${2:model}`!p snip.rv = get_quoting_style(snip)`,
     string=`!p snip.rv = get_quoting_style(snip)`${3:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
@@ -196,7 +196,7 @@ ${1:field} = fields.Many2one(
 )
 endsnippet
 
-snippet o2m "One2many field"
+snippet o2m "One2many field" b
 ${1:field} = fields.One2many(
 	comodel_name=`!p snip.rv = get_quoting_style(snip)`${2:model}`!p snip.rv = get_quoting_style(snip)`,
 	inverse_name=`!p snip.rv = get_quoting_style(snip)`${3:field}`!p snip.rv = get_quoting_style(snip)`,
@@ -204,14 +204,14 @@ ${1:field} = fields.One2many(
 )
 endsnippet
 
-snippet m2m "Many2many field"
+snippet m2m "Many2many field" b
 ${1:field} = fields.Many2many(
 	comodel_name=`!p snip.rv = get_quoting_style(snip)`${2:model}`!p snip.rv = get_quoting_style(snip)`,
 	string=`!p snip.rv = get_quoting_style(snip)`${3:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,$0
 )
 endsnippet
 
-snippet compute "Compute field"
+snippet compute "Compute field" b
 ${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Boolean','Selection','Char','Text','Html','Integer','Float','Many2one','One2many','Many2many'])`(compute=`!p snip.rv = get_quoting_style(snip)`_compute_$1`!p snip.rv = get_quoting_style(snip)`)
 
 @api.depends('${3:field}')
@@ -220,14 +220,14 @@ def _compute_$1(self):
         record.$1 = $0
 endsnippet
 
-snippet onchange "Onchange handler"
+snippet onchange "Onchange handler" b
 @api.onchange(`!p snip.rv = get_quoting_style(snip)`${1:field}`!p snip.rv = get_quoting_style(snip)`)
 def _onchange_$1(self):
 	self.${2:other} = $0
 endsnippet
 
 
-snippet constrain "Python constrain"
+snippet constrain "Python constrain" b
 from openerp import _, api, exceptions$0
 
 @api.one
@@ -237,7 +237,7 @@ def _check_$1(self):
         raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
 endsnippet
 
-snippet constraint "Python constrain"
+snippet constraint "Python constrain" b
 from openerp import _, api, exceptions$0
 
 @api.one
@@ -247,7 +247,7 @@ def _check_$1(self):
         raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
 endsnippet
 
-snippet constrains "Python constrain"
+snippet constrains "Python constrain" b
 from openerp import _, api, exceptions$0
 
 @api.one
@@ -258,7 +258,7 @@ def _check_$1(self):
 endsnippet
 
 
-snippet model "New model"
+snippet model "New model" b
 class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.Model):
 	_name = `!p snip.rv = get_quoting_style(snip)`${1:base_model}`!p snip.rv = get_quoting_style(snip)`
 	_description = `!p snip.rv = get_quoting_style(snip)`$3`!p snip.rv = t[1].replace(".", " ").title()``!p snip.rv = get_quoting_style(snip)`
@@ -266,14 +266,14 @@ class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models
 	$0
 endsnippet
 
-snippet inherit "Model inheritance"
+snippet inherit "Model inheritance" b
 class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.Model):
 	_inherit = `!p snip.rv = get_quoting_style(snip)`${1:base_model}`!p snip.rv = get_quoting_style(snip)`
 
 	$0
 endsnippet
 
-snippet controller "Basic HTTP controller"
+snippet controller "Basic HTTP controller" b
 from openerp import http
 from openerp.http import request
 
@@ -285,20 +285,20 @@ class ${1:Controller}(http.Controller):
         return request.render($0)
 endsnippet
 
-snippet route "HTTP route method"
+snippet route "HTTP route method" b
 @http.route(`!p snip.rv = get_quoting_style(snip)`/${1:index}`!p snip.rv = get_quoting_style(snip)`, type=`!p snip.rv = get_quoting_style(snip)`$3`!p snip.rv = complete(t[3], ['http','json'])``!p snip.rv = get_quoting_style(snip)`, auth=`!p snip.rv = get_quoting_style(snip)`$4`!p snip.rv = complete(t[4], ['user','public','none'])``!p snip.rv = get_quoting_style(snip)`)
 def $2`!p snip.rv = t[1].replace('/', '_')`(self, *args, **kwargs):
     return request.render($0)
 endsnippet
 
-snippet multi "@api.multi method"
+snippet multi "@api.multi method" b
 @api.multi
 def ${1:method}(self, ${2:args}):
 	for rec in self:
 		$0
 endsnippet
 
-snippet one "@api.one method"
+snippet one "@api.one method" b
 @api.multi
 def ${1:method}(self, ${2:args}):
 	self.ensure_one()
