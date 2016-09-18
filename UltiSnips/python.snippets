@@ -273,6 +273,14 @@ class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models
 	$0
 endsnippet
 
+snippet wizard "Transient model" b
+class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.TransientModel):
+	_name = `!p snip.rv = get_quoting_style(snip)`${1:base_model}`!p snip.rv = get_quoting_style(snip)`
+	_description = `!p snip.rv = get_quoting_style(snip)`$3`!p snip.rv = t[1].replace(".", " ").title()``!p snip.rv = get_quoting_style(snip)`
+
+	$0
+endsnippet
+
 snippet controller "Basic HTTP controller" b
 from openerp import http
 from openerp.http import request
