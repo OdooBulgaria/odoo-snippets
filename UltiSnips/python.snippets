@@ -260,7 +260,7 @@ endsnippet
 
 snippet model "New model" b
 class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.Model):
-	_name = `!p snip.rv = get_quoting_style(snip)`${1:base_model}`!p snip.rv = get_quoting_style(snip)`
+	_name = `!p snip.rv = get_quoting_style(snip)`${1:model_name}`!p snip.rv = get_quoting_style(snip)`
 	_description = `!p snip.rv = get_quoting_style(snip)`$3`!p snip.rv = t[1].replace(".", " ").title()``!p snip.rv = get_quoting_style(snip)`
 
 	$0
@@ -269,6 +269,13 @@ endsnippet
 snippet inherit "Model inheritance" b
 class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.Model):
 	_inherit = `!p snip.rv = get_quoting_style(snip)`${1:base_model}`!p snip.rv = get_quoting_style(snip)`
+
+	$0
+endsnippet
+
+snippet amodel "Abstract model" b
+class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[3].split('.')))`(models.AbstractModel):
+	_name = `!p snip.rv = get_quoting_style(snip)`${1:model_name}`!p snip.rv = get_quoting_style(snip)`
 
 	$0
 endsnippet
