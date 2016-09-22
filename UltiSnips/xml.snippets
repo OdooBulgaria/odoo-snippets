@@ -152,6 +152,22 @@ endsnippet
 snippet field "View field tag"
 <field name="$1"/>$0
 endsnippet
+
+snippet context "View context field tag" b
+<field name="context">{${1:context}}</field>$0
+endsnippet
+
+snippet context_eval "View evaluated context tag" b
+<field name="context" eval="{${1:context}}"/>$0
+endsnippet
+
+snippet domain "View domain field tag" b
+<field name="domain">[${1:context}]</field>$0
+endsnippet
+
+snippet domain_eval "View evaluated domain tag" b
+<field name="domain" eval="{${1:domain}}"/>$0
+endsnippet
 snippet nb "Notebook"
 <notebook>
 	<page string="${1:Name}">
