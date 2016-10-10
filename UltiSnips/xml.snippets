@@ -31,7 +31,7 @@ snippet data "Data tag"
 </data>
 endsnippet
 snippet act "Action record"
-<record id="action_`!p snip.rv = t[1].lower().replace(' ', '_')`" model="ir.actions.act_window">
+<record id="`!p snip.rv = "%s%s" % ("action_", t[1].lower().replace(' ', '_'))`" model="ir.actions.act_window">
 	<field name="name">${1:Name}</field>
 	<field name="res_model">${2:model}</field>
 	<field name="view_mode">tree,form</field>
@@ -48,7 +48,7 @@ snippet act "Action record"
 endsnippet
 
 snippet action "Action record"
-<record id="action_`!p snip.rv = t[1].lower().replace(' ', '_')`" model="ir.actions.act_window">
+<record id="`!p snip.rv = "%s%s" % ("action_", t[1].lower().replace(' ', '_'))`" model="ir.actions.act_window">
 	<field name="name">${1:Name}</field>
 	<field name="res_model">${2:model}</field>
 	<field name="view_mode">tree,form</field>
@@ -121,7 +121,7 @@ snippet xpath "XPath selector tag"
 </xpath>
 endsnippet
 snippet menu "Menu record shortcut"
-<menuitem id="${2:`!p snip.rv = 'menu_' + t[1].lower().replace(' ', '_')`}"
+<menuitem id="$2`!p snip.rv = "%s%s" % ("menu_", t[1].lower().replace(' ', '_'))`"
 	name="${1:name}"
 	action="${3}"
 	groups="${4}"
@@ -130,7 +130,7 @@ snippet menu "Menu record shortcut"
 endsnippet
 
 snippet menuitem "Menu record shortcut"
-<menuitem id="${2:`!p snip.rv = 'menu_' + t[1].lower().replace(' ', '_')`}"
+<menuitem id="$2`!p snip.rv = "%s%s" % ("menu_", t[1].lower().replace(' ', '_'))`"
 	name="${1:name}"
 	action="${3}"
 	groups="${4}"
@@ -353,19 +353,19 @@ snippet aesc "a escaped tag"
 endsnippet
 
 snippet tpl "QWeb template"
-<template id="${2:`!p snip.rv = t[1].lower().replace(' ', '_')`}" name="${1:name}">
+<template id="$2`!p snip.rv = "%s%s" % ("", t[1].lower().replace(' ', '_'))`" name="${1:name}">
     $0
 </template>
 endsnippet
 
 snippet template "QWeb template"
-<template id="${2:`!p snip.rv = t[1].lower().replace(' ', '_')`}" name="${1:name}">
+<template id="$2`!p snip.rv = "%s%s" % ("", t[1].lower().replace(' ', '_'))`" name="${1:name}">
     $0
 </template>
 endsnippet
 
 snippet paper "Paper Format Record"
-<record id="paperformat_${2:`!p snip.rv = t[1].lower().replace(' ', '_')`}" model="report.paperformat">
+<record id="$2`!p snip.rv = "%s%s" % ("paperformat_", t[1].lower().replace(' ', '_'))`" model="report.paperformat">
     <field name="name">${1:Name}</field>
     <field name="default" eval="$3`!p snip.rv = complete(t[3], ['True', 'False'])`"/>
     <field name="format">$4`!p snip.rv = complete(t[4], ['A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'B0', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'Legal', 'Letter', 'Tabloid', 'custom'])`</field>
@@ -384,7 +384,7 @@ snippet paper "Paper Format Record"
 endsnippet
 
 snippet paperfmt "Paper Format Record"
-<record id="paperformat_${2:`!p snip.rv = t[1].lower().replace(' ', '_')`}" model="report.paperformat">
+<record id="$2`!p snip.rv = "%s%s" % ("paperformat_", t[1].lower().replace(' ', '_'))`" model="report.paperformat">
     <field name="name">${1:Name}</field>
     <field name="default" eval="$3`!p snip.rv = complete(t[3], ['True', 'False'])`"/>
     <field name="format">$4`!p snip.rv = complete(t[4], ['A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'B0', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'Legal', 'Letter', 'Tabloid', 'custom'])`</field>
@@ -403,7 +403,7 @@ snippet paperfmt "Paper Format Record"
 endsnippet
 
 snippet paperformat "Paper Format Record"
-<record id="paperformat_${2:`!p snip.rv = t[1].lower().replace(' ', '_')`}" model="report.paperformat">
+<record id="$2`!p snip.rv = "%s%s" % ("paperformat_", t[1].lower().replace(' ', '_'))`" model="report.paperformat">
     <field name="name">${1:Name}</field>
     <field name="default" eval="$3`!p snip.rv = complete(t[3], ['True', 'False'])`"/>
     <field name="format">$4`!p snip.rv = complete(t[4], ['A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'B0', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'Legal', 'Letter', 'Tabloid', 'custom'])`</field>
@@ -419,4 +419,19 @@ snippet paperformat "Paper Format Record"
     <field name="header_spacing">0</field>
     <field name="dpi">90</field>
 </record>
+endsnippet
+snippet cron "Cron job" b
+<record forcecreate="True" id="$2`!p snip.rv = "%s%s" % ("ir_cron_", t[1].lower().replace(' ', '_'))`" model="ir.cron">
+    <field name="name">${1:Name}</field>
+    <field name="active" eval="True"/>
+    <field name="user_id" ref="base.user_root"/>
+    <field name="interval_number">${4:30}</field>
+    <field name="interval_type">$3`!p snip.rv = complete(t[3], ['minutes', 'hours', 'work_days', 'days', 'weeks', 'months'])`</field>
+    <field name="numbercall">-1</field>
+    <field name="doall" eval="False"/>
+    <field name="model" eval="'${5:model.name}'"/>
+    <field name="function" eval="'${6:method}'"/>
+    <field name="args" eval="'()'"/>
+    <field name="priority">5</field>
+</record>$0
 endsnippet
