@@ -274,7 +274,7 @@ class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models
 endsnippet
 
 snippet amodel "Abstract model" b
-class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[3].split('.')))`(models.AbstractModel):
+class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.AbstractModel):
 	_name = `!p snip.rv = get_quoting_style(snip)`${1:model_name}`!p snip.rv = get_quoting_style(snip)`
 
 	$0
