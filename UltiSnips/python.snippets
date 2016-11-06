@@ -319,3 +319,42 @@ def ${1:method}(self, ${2:args}):
 	self.ensure_one()
 	$0
 endsnippet
+snippet test_tx "Odoo transaction test case" b
+from openerp.tests import common
+
+
+class Test${1:Foo}(common.TransactionCase):
+
+    def test_${2:bar}(self):
+        $0
+endsnippet
+
+snippet testtx "Odoo transaction test case" b
+from openerp.tests import common
+
+
+class Test${1:Foo}(common.TransactionCase):
+
+    def test_${2:bar}(self):
+        $0
+endsnippet
+
+snippet tx_test "Odoo transaction test case" b
+from openerp.tests import common
+
+
+class Test${1:Foo}(common.TransactionCase):
+
+    def test_${2:bar}(self):
+        $0
+endsnippet
+
+snippet txtest "Odoo transaction test case" b
+from openerp.tests import common
+
+
+class Test${1:Foo}(common.TransactionCase):
+
+    def test_${2:bar}(self):
+        $0
+endsnippet
