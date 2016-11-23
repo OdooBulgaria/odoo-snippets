@@ -175,7 +175,7 @@ endsnippet
 snippet selection "Selection field" b
 ${1:field} = fields.Selection(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
-	selection=[(`!p snip.rv = get_quoting_style(snip)`${3:value}`!p snip.rv = get_quoting_style(snip)`, `!p snip.rv = get_quoting_style(snip)`${4:`!p snip.rv = t[3].title()`}`!p snip.rv = get_quoting_style(snip)`)$0])
+	selection=[(`!p snip.rv = get_quoting_style(snip)`${3:value}`!p snip.rv = get_quoting_style(snip)`, `!p snip.rv = get_quoting_style(snip)`${4:`!p snip.rv = t[3].title()`}`!p snip.rv = get_quoting_style(snip)`)$0],
 )
 endsnippet
 
