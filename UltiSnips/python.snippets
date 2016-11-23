@@ -166,6 +166,12 @@ ${1:field} = fields.Float(
 )
 endsnippet
 
+snippet binary "Binary field" b
+${1:field} = fields.Binary(
+    string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,$0
+)
+endsnippet
+
 snippet selection "Selection field" b
 ${1:field} = fields.Selection(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
@@ -184,7 +190,7 @@ snippet related "Related field" b
 ${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Binary','Boolean','Selection','Char','Date','Datetime','Text','Html','Integer','Float','Many2one','One2many','Many2many'])`(
     related=`!p snip.rv = get_quoting_style(snip)`$3.$1`!p snip.rv = get_quoting_style(snip)`,
     string=`!p snip.rv = get_quoting_style(snip)`${4:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
-    store=False$0,
+    store=False,$0
 )
 endsnippet
 
