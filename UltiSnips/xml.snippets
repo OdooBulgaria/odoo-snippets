@@ -180,6 +180,24 @@ endsnippet
 snippet domain_eval "View evaluated domain tag" b
 <field name="domain" eval="{${1:domain}}"/>$0
 endsnippet
+
+snippet sheet "Sheet tag"
+<sheet>
+	${0:${VISUAL}}
+</sheet>
+endsnippet
+
+snippet header "Header tag"
+<header>
+	${0:${VISUAL}}
+</header>
+endsnippet
+
+snippet footer "Footer tag"
+<footer>
+	${0:${VISUAL}}
+</footer>
+endsnippet
 snippet nb "Notebook"
 <notebook>
 	<page string="${1:Name}">
