@@ -264,6 +264,26 @@ def _check_$1(self):
 endsnippet
 
 
+
+snippet nameget "name_get() function" b
+@api.multi
+def name_get(self):
+    result = []
+    for rec in self:
+        result.append((rec.id, u`!p snip.rv = get_quoting_style(snip)`${1:%s %s}`!p snip.rv = get_quoting_style(snip)` % (${2:rec.id, rec.name})))$0
+    return result
+endsnippet
+
+snippet name_get "name_get() function" b
+@api.multi
+def name_get(self):
+    result = []
+    for rec in self:
+        result.append((rec.id, u`!p snip.rv = get_quoting_style(snip)`${1:%s %s}`!p snip.rv = get_quoting_style(snip)` % (${2:rec.id, rec.name})))$0
+    return result
+endsnippet
+
+
 snippet model "New model" b
 class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.Model):
 	_name = `!p snip.rv = get_quoting_style(snip)`${1:model_name}`!p snip.rv = get_quoting_style(snip)`
