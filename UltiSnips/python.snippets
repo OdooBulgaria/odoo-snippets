@@ -236,31 +236,34 @@ endsnippet
 snippet constrain "Python constrain" b
 from openerp import _, api, exceptions$0
 
-@api.one
+@api.multi
 @api.constrains(`!p snip.rv = get_quoting_style(snip)`${1:field}`!p snip.rv = get_quoting_style(snip)`)
 def _check_$1(self):
-    if self.$1 == ${2:value}:
-        raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
+    for rec in self:
+        if rec.$1 == ${2:value}:
+            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
 endsnippet
 
 snippet constraint "Python constrain" b
 from openerp import _, api, exceptions$0
 
-@api.one
+@api.multi
 @api.constrains(`!p snip.rv = get_quoting_style(snip)`${1:field}`!p snip.rv = get_quoting_style(snip)`)
 def _check_$1(self):
-    if self.$1 == ${2:value}:
-        raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
+    for rec in self:
+        if rec.$1 == ${2:value}:
+            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
 endsnippet
 
 snippet constrains "Python constrain" b
 from openerp import _, api, exceptions$0
 
-@api.one
+@api.multi
 @api.constrains(`!p snip.rv = get_quoting_style(snip)`${1:field}`!p snip.rv = get_quoting_style(snip)`)
 def _check_$1(self):
-    if self.$1 == ${2:value}:
-        raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
+    for rec in self:
+        if rec.$1 == ${2:value}:
+            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
 endsnippet
 
 
