@@ -159,10 +159,10 @@ ${1:field} = fields.Integer(
 )
 endsnippet
 snippet float "Float field" b
-from openerp.addons import decimal_precision as dp$0
-${1:field} = fields.Float(
-    string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
-	digits=dp.get_precision(`!p snip.rv = get_quoting_style(snip)`${3:Account}`!p snip.rv = get_quoting_style(snip)`),
+from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.addons import decimal_precision as dp$0
+${2:field} = fields.Float(
+    string=`!p snip.rv = get_quoting_style(snip)`${3:`!p snip.rv = cleanup_field_string(t[2])`}`!p snip.rv = get_quoting_style(snip)`,
+	digits=dp.get_precision(`!p snip.rv = get_quoting_style(snip)`${4:Account}`!p snip.rv = get_quoting_style(snip)`),
 )
 endsnippet
 
@@ -234,36 +234,36 @@ endsnippet
 
 
 snippet constrain "Python constrain" b
-from openerp import _, api, exceptions$0
+from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])` import _, api, exceptions$0
 
 @api.multi
-@api.constrains(`!p snip.rv = get_quoting_style(snip)`${1:field}`!p snip.rv = get_quoting_style(snip)`)
-def _check_$1(self):
+@api.constrains(`!p snip.rv = get_quoting_style(snip)`${2:field}`!p snip.rv = get_quoting_style(snip)`)
+def _check_$2(self):
     for rec in self:
-        if rec.$1 == ${2:value}:
-            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
+        if rec.$2 == ${3:value}:
+            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${4:Error}`!p snip.rv = get_quoting_style(snip)`))
 endsnippet
 
 snippet constraint "Python constrain" b
-from openerp import _, api, exceptions$0
+from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])` import _, api, exceptions$0
 
 @api.multi
-@api.constrains(`!p snip.rv = get_quoting_style(snip)`${1:field}`!p snip.rv = get_quoting_style(snip)`)
-def _check_$1(self):
+@api.constrains(`!p snip.rv = get_quoting_style(snip)`${2:field}`!p snip.rv = get_quoting_style(snip)`)
+def _check_$2(self):
     for rec in self:
-        if rec.$1 == ${2:value}:
-            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
+        if rec.$2 == ${3:value}:
+            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${4:Error}`!p snip.rv = get_quoting_style(snip)`))
 endsnippet
 
 snippet constrains "Python constrain" b
-from openerp import _, api, exceptions$0
+from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])` import _, api, exceptions$0
 
 @api.multi
-@api.constrains(`!p snip.rv = get_quoting_style(snip)`${1:field}`!p snip.rv = get_quoting_style(snip)`)
-def _check_$1(self):
+@api.constrains(`!p snip.rv = get_quoting_style(snip)`${2:field}`!p snip.rv = get_quoting_style(snip)`)
+def _check_$2(self):
     for rec in self:
-        if rec.$1 == ${2:value}:
-            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${3:Error}`!p snip.rv = get_quoting_style(snip)`))
+        if rec.$2 == ${3:value}:
+            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${4:Error}`!p snip.rv = get_quoting_style(snip)`))
 endsnippet
 
 
@@ -318,14 +318,14 @@ class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models
 endsnippet
 
 snippet controller "Basic HTTP controller" b
-from openerp import http
-from openerp.http import request
+from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])` import http
+from $1.http import request
 
 
-class ${1:Controller}(http.Controller):
+class ${2:Controller}(http.Controller):
 
-    @http.route(`!p snip.rv = get_quoting_style(snip)`/${2:index}`!p snip.rv = get_quoting_style(snip)`, type=`!p snip.rv = get_quoting_style(snip)`$4`!p snip.rv = complete(t[4], ['http','json'])``!p snip.rv = get_quoting_style(snip)`, auth=`!p snip.rv = get_quoting_style(snip)`$5`!p snip.rv = complete(t[5], ['user','public','none'])``!p snip.rv = get_quoting_style(snip)`)
-    def $3`!p snip.rv = t[2].replace('/', '_')`(self, *args, **kwargs):
+    @http.route(`!p snip.rv = get_quoting_style(snip)`/${3:index}`!p snip.rv = get_quoting_style(snip)`, type=`!p snip.rv = get_quoting_style(snip)`$5`!p snip.rv = complete(t[5], ['http','json'])``!p snip.rv = get_quoting_style(snip)`, auth=`!p snip.rv = get_quoting_style(snip)`$6`!p snip.rv = complete(t[6], ['user','public','none'])``!p snip.rv = get_quoting_style(snip)`)
+    def $4`!p snip.rv = t[3].replace('/', '_')`(self, *args, **kwargs):
         return request.render($0)
 endsnippet
 
@@ -349,41 +349,41 @@ def ${1:method}(self, ${2:args}):
 	$0
 endsnippet
 snippet test_tx "Odoo transaction test case" b
-from openerp.tests import common
+from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.tests import common
 
 
-class Test${1:Foo}(common.TransactionCase):
+class Test${2:Foo}(common.TransactionCase):
 
-    def test_${2:bar}(self):
+    def test_${3:bar}(self):
         $0
 endsnippet
 
 snippet testtx "Odoo transaction test case" b
-from openerp.tests import common
+from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.tests import common
 
 
-class Test${1:Foo}(common.TransactionCase):
+class Test${2:Foo}(common.TransactionCase):
 
-    def test_${2:bar}(self):
+    def test_${3:bar}(self):
         $0
 endsnippet
 
 snippet tx_test "Odoo transaction test case" b
-from openerp.tests import common
+from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.tests import common
 
 
-class Test${1:Foo}(common.TransactionCase):
+class Test${2:Foo}(common.TransactionCase):
 
-    def test_${2:bar}(self):
+    def test_${3:bar}(self):
         $0
 endsnippet
 
 snippet txtest "Odoo transaction test case" b
-from openerp.tests import common
+from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.tests import common
 
 
-class Test${1:Foo}(common.TransactionCase):
+class Test${2:Foo}(common.TransactionCase):
 
-    def test_${2:bar}(self):
+    def test_${3:bar}(self):
         $0
 endsnippet
