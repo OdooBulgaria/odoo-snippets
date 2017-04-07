@@ -7,7 +7,7 @@ def complete(t, opts):
 	return '({0:s})'.format('|'.join(opts))
 endglobal
 
-snippet xml "Odoo v8/OpenERP XML file"
+snippet xml "Odoo v8/OpenERP XML file" b
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
@@ -16,7 +16,7 @@ snippet xml "Odoo v8/OpenERP XML file"
 </openerp>
 endsnippet
 
-snippet xml9 "Odoo v9 XML file"
+snippet xml9 "Odoo v9 XML file" b
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
@@ -25,12 +25,13 @@ snippet xml9 "Odoo v9 XML file"
 </odoo>
 endsnippet
 
-snippet data "Data tag"
+snippet data "Data tag" b
 <data>
 	$0
 </data>
 endsnippet
-snippet act "Action record"
+
+snippet "act(?:ion)?" "Action record" br
 <record id="`!p snip.rv = "%s%s" % ("action_", t[1].lower().replace(' ', '_'))`" model="ir.actions.act_window">
 	<field name="name">${1:Name}</field>
 	<field name="res_model">${2:model}</field>
@@ -47,23 +48,7 @@ snippet act "Action record"
 </record>
 endsnippet
 
-snippet action "Action record"
-<record id="`!p snip.rv = "%s%s" % ("action_", t[1].lower().replace(' ', '_'))`" model="ir.actions.act_window">
-	<field name="name">${1:Name}</field>
-	<field name="res_model">${2:model}</field>
-	<field name="view_mode">tree,form</field>
-	<field name="help" type="html">
-		<p class="oe_view_nocontent_create">
-			<!-- Add Text Here -->
-			$0
-		</p>
-		<p>
-			<!-- More details about what a user can do -->
-		</p>
-	</field>
-</record>
-endsnippet
-snippet form "Form view"
+snippet form "Form view" b
 <record id="view_${2:`!p snip.rv = t[1].replace('.', '_')`}_form" model="ir.ui.view">
 	<field name="name">$1.form</field>
 	<field name="model">${1:model}</field>
@@ -75,7 +60,7 @@ snippet form "Form view"
 </record>
 endsnippet
 
-snippet tree "Tree view"
+snippet tree "Tree view" b
 <record id="view_${2:`!p snip.rv = t[1].replace('.', '_')`}_tree" model="ir.ui.view">
 	<field name="name">$1.tree</field>
 	<field name="model">${1:model}</field>
@@ -86,7 +71,8 @@ snippet tree "Tree view"
 	</field>
 </record>
 endsnippet
-snippet inherit "Form view inheritance"
+
+snippet "inherit|finherit|form_inherit" "Form view inheritance" br
 <record id="${3:`!p snip.rv = t[2].partition('.')[2]`}_inherit" model="ir.ui.view">
 	<field name="model">${1:model}</field>
 	<field name="inherit_id" ref="${2:parent_view}"/>
@@ -96,43 +82,17 @@ snippet inherit "Form view inheritance"
 </record>
 endsnippet
 
-snippet finherit "Form view inheritance"
-<record id="${3:`!p snip.rv = t[2].partition('.')[2]`}_inherit" model="ir.ui.view">
-	<field name="model">${1:model}</field>
-	<field name="inherit_id" ref="${2:parent_view}"/>
-	<field name="arch" type="xml">
-		$0
-	</field>
-</record>
-endsnippet
-
-snippet form_inherit "Form view inheritance"
-<record id="${3:`!p snip.rv = t[2].partition('.')[2]`}_inherit" model="ir.ui.view">
-	<field name="model">${1:model}</field>
-	<field name="inherit_id" ref="${2:parent_view}"/>
-	<field name="arch" type="xml">
-		$0
-	</field>
-</record>
-endsnippet
-snippet xpath "XPath selector tag"
+snippet xpath "XPath selector tag" b
 <xpath expr="${1://}" position="$2`!p snip.rv = complete(t[2], ['inside', 'replace', 'after', 'before', 'attributes'])`">
 	$0
 </xpath>
 endsnippet
-snippet att "View field attribute snippet"
+
+snippet "att(?:r)?(?:ibute)?" "View field attribute snippet" br
 <attribute name="$1">$2</attribute>$0
 endsnippet
 
-snippet attr "View field attribute snippet"
-<attribute name="$1">$2</attribute>$0
-endsnippet
-
-snippet attribute "View field attribute snippet"
-<attribute name="$1">$2</attribute>$0
-endsnippet
-
-snippet menu "Menu record shortcut"
+snippet "menu(?:item)?" "Menu record shortcut" br
 <menuitem id="$2`!p snip.rv = "%s%s" % ("menu_", t[1].lower().replace(' ', '_'))`"
 	name="${1:name}"
 	action="${3}"
@@ -141,26 +101,12 @@ snippet menu "Menu record shortcut"
 />
 endsnippet
 
-snippet menuitem "Menu record shortcut"
-<menuitem id="$2`!p snip.rv = "%s%s" % ("menu_", t[1].lower().replace(' ', '_'))`"
-	name="${1:name}"
-	action="${3}"
-	groups="${4}"
-	parent="${5:xml_id}"
-/>
-endsnippet
-
-snippet gr "Group tag"
+snippet "gr(?:oup)?" "Group tag" br
 <group>
 	${0:${VISUAL}}
 </group>
 endsnippet
 
-snippet group "Group tag"
-<group>
-	${0:${VISUAL}}
-</group>
-endsnippet
 snippet field "View field tag"
 <field name="$1"/>$0
 endsnippet
@@ -198,7 +144,8 @@ snippet footer "Footer tag"
 	${0:${VISUAL}}
 </footer>
 endsnippet
-snippet nb "Notebook"
+
+snippet "nb|notebook" "Notebook" br
 <notebook>
 	<page string="${1:Name}">
 		$0
@@ -206,30 +153,17 @@ snippet nb "Notebook"
 </notebook>
 endsnippet
 
-snippet notebook "Notebook"
-<notebook>
-	<page string="${1:Name}">
-		$0
-	</page>
-</notebook>
-endsnippet
-
-snippet pg "Page tag"
+snippet "pg|page" "Page tag" br
 <page string="${1:Name}">
 	$0
 </page>
 endsnippet
 
-snippet page "Page tag"
-<page string="${1:Name}">
-	$0
-</page>
-endsnippet
 snippet pdb "QWeb PDB debugger"
 <t t-debug="pdb"/>$0
 endsnippet
 
-snippet report "QWeb Report Shortcut Record"
+snippet report "QWeb Report Shortcut Record" b
 <report
 	id="report_${2:`!p snip.rv = t[1].replace('.', '_') `}"
 	model="${1:model}"
@@ -240,62 +174,21 @@ snippet report "QWeb Report Shortcut Record"
 />
 $0
 endsnippet
-snippet call "t-call tag"
+
+snippet "(?:t-?)?call" "t-call tag" br
 <t t-call="${1:template}">
 	$0
 </t>
 endsnippet
 
-snippet tcall "t-call tag"
-<t t-call="${1:template}">
-	$0
-</t>
-endsnippet
-
-snippet set "t-set tag"
+snippet "(?:t-?)?set" "t-set tag" br
 <t t-set="${1}" t-value="${2}"/>
 $0
 endsnippet
-
-snippet tset "t-set tag"
-<t t-set="${1}" t-value="${2}"/>
-$0
-endsnippet
-
 snippet tif "t if snippet"
 <t t-if="${1:condition}">
 	${2:${VISUAL}}
 </t>
-endsnippet
-
-snippet pif "p if snippet"
-<p t-if="${1:condition}">
-	${2:${VISUAL}}
-</p>
-endsnippet
-
-snippet dif "div if snippet"
-<div t-if="${1:condition}">
-	${2:${VISUAL}}
-</div>
-endsnippet
-
-snippet sif "span if snippet"
-<span t-if="${1:condition}">
-	${2:${VISUAL}}
-</span>
-endsnippet
-
-snippet lif "li if snippet"
-<li t-if="${1:condition}">
-	${2:${VISUAL}}
-</li>
-endsnippet
-
-snippet aif "a if snippet"
-<a t-if="${1:condition}">
-	${2:${VISUAL}}
-</a>
 endsnippet
 
 snippet tfor "t for snippet"
@@ -304,10 +197,38 @@ snippet tfor "t for snippet"
 </t>
 endsnippet
 
+snippet tfield "t field tag"
+<t t-field="${1:field}"$0/>
+endsnippet
+
+snippet tesc "t escaped tag"
+<t t-esc="${1:value}"$0/>
+endsnippet
+
+snippet pif "p if snippet"
+<p t-if="${1:condition}">
+	${2:${VISUAL}}
+</p>
+endsnippet
+
 snippet pfor "p for snippet"
 <p t-foreach="${1:haystack}" t-as="${2:needle}">
 	$0
 </p>
+endsnippet
+
+snippet pfield "p field tag"
+<p t-field="${1:field}"$0/>
+endsnippet
+
+snippet pesc "p escaped tag"
+<p t-esc="${1:value}"$0/>
+endsnippet
+
+snippet dif "div if snippet"
+<div t-if="${1:condition}">
+	${2:${VISUAL}}
+</div>
 endsnippet
 
 snippet dfor "div for snippet"
@@ -316,10 +237,38 @@ snippet dfor "div for snippet"
 </div>
 endsnippet
 
+snippet dfield "div field tag"
+<div t-field="${1:field}"$0/>
+endsnippet
+
+snippet desc "div escaped tag"
+<div t-esc="${1:value}"$0/>
+endsnippet
+
+snippet sif "span if snippet"
+<span t-if="${1:condition}">
+	${2:${VISUAL}}
+</span>
+endsnippet
+
 snippet sfor "span for snippet"
 <span t-foreach="${1:haystack}" t-as="${2:needle}">
 	$0
 </span>
+endsnippet
+
+snippet sfield "span field tag"
+<span t-field="${1:field}"$0/>
+endsnippet
+
+snippet sesc "span escaped tag"
+<span t-esc="${1:value}"$0/>
+endsnippet
+
+snippet lif "li if snippet"
+<li t-if="${1:condition}">
+	${2:${VISUAL}}
+</li>
 endsnippet
 
 snippet lfor "li for snippet"
@@ -328,73 +277,40 @@ snippet lfor "li for snippet"
 </li>
 endsnippet
 
-snippet afor "a for snippet"
-<a t-foreach="${1:haystack}" t-as="${2:needle}">
-	$0
-</a>
-endsnippet
-
-snippet tfield "t field tag"
-<t t-field="${1:field}"$0/>
-endsnippet
-
-snippet pfield "p field tag"
-<p t-field="${1:field}"$0/>
-endsnippet
-
-snippet dfield "div field tag"
-<div t-field="${1:field}"$0/>
-endsnippet
-
-snippet sfield "span field tag"
-<span t-field="${1:field}"$0/>
-endsnippet
-
 snippet lfield "li field tag"
 <li t-field="${1:field}"$0/>
-endsnippet
-
-snippet afield "a field tag"
-<a t-field="${1:field}"$0/>
-endsnippet
-
-snippet tesc "t escaped tag"
-<t t-esc="${1:value}"$0/>
-endsnippet
-
-snippet pesc "p escaped tag"
-<p t-esc="${1:value}"$0/>
-endsnippet
-
-snippet desc "div escaped tag"
-<div t-esc="${1:value}"$0/>
-endsnippet
-
-snippet sesc "span escaped tag"
-<span t-esc="${1:value}"$0/>
 endsnippet
 
 snippet lesc "li escaped tag"
 <li t-esc="${1:value}"$0/>
 endsnippet
 
+snippet aif "a if snippet"
+<a t-if="${1:condition}">
+	${2:${VISUAL}}
+</a>
+endsnippet
+
+snippet afor "a for snippet"
+<a t-foreach="${1:haystack}" t-as="${2:needle}">
+	$0
+</a>
+endsnippet
+
+snippet afield "a field tag"
+<a t-field="${1:field}"$0/>
+endsnippet
+
 snippet aesc "a escaped tag"
 <a t-esc="${1:value}"$0/>
 endsnippet
-
-snippet tpl "QWeb template"
+snippet "tpl|template" "QWeb template" br
 <template id="$2`!p snip.rv = "%s%s" % ("", t[1].lower().replace(' ', '_'))`" name="${1:name}">
     $0
 </template>
 endsnippet
 
-snippet template "QWeb template"
-<template id="$2`!p snip.rv = "%s%s" % ("", t[1].lower().replace(' ', '_'))`" name="${1:name}">
-    $0
-</template>
-endsnippet
-
-snippet paper "Paper Format Record"
+snippet "paper(?:fmt|format)?" "Paper Format Record" br
 <record id="$2`!p snip.rv = "%s%s" % ("paperformat_", t[1].lower().replace(' ', '_'))`" model="report.paperformat">
     <field name="name">${1:Name}</field>
     <field name="default" eval="$3`!p snip.rv = complete(t[3], ['True', 'False'])`"/>
@@ -413,43 +329,6 @@ snippet paper "Paper Format Record"
 </record>
 endsnippet
 
-snippet paperfmt "Paper Format Record"
-<record id="$2`!p snip.rv = "%s%s" % ("paperformat_", t[1].lower().replace(' ', '_'))`" model="report.paperformat">
-    <field name="name">${1:Name}</field>
-    <field name="default" eval="$3`!p snip.rv = complete(t[3], ['True', 'False'])`"/>
-    <field name="format">$4`!p snip.rv = complete(t[4], ['A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'B0', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'Legal', 'Letter', 'Tabloid', 'custom'])`</field>
-    <!-- 'page_height' and 'page_width' can only be used with 'custom' format -->
-    <field name="page_height">${5:210}</field>
-    <field name="page_width">${6:197}</field>
-    <field name="orientation">$7`!p snip.rv = complete(t[7], ['Portrait', 'Landscape'])`</field>
-    <field name="margin_top">20</field>
-    <field name="margin_bottom">20</field>
-    <field name="margin_left">30</field>
-    <field name="margin_right">10</field>
-    <field name="header_line" eval="False"/>
-    <field name="header_spacing">0</field>
-    <field name="dpi">90</field>
-</record>
-endsnippet
-
-snippet paperformat "Paper Format Record"
-<record id="$2`!p snip.rv = "%s%s" % ("paperformat_", t[1].lower().replace(' ', '_'))`" model="report.paperformat">
-    <field name="name">${1:Name}</field>
-    <field name="default" eval="$3`!p snip.rv = complete(t[3], ['True', 'False'])`"/>
-    <field name="format">$4`!p snip.rv = complete(t[4], ['A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'B0', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'Legal', 'Letter', 'Tabloid', 'custom'])`</field>
-    <!-- 'page_height' and 'page_width' can only be used with 'custom' format -->
-    <field name="page_height">${5:210}</field>
-    <field name="page_width">${6:197}</field>
-    <field name="orientation">$7`!p snip.rv = complete(t[7], ['Portrait', 'Landscape'])`</field>
-    <field name="margin_top">20</field>
-    <field name="margin_bottom">20</field>
-    <field name="margin_left">30</field>
-    <field name="margin_right">10</field>
-    <field name="header_line" eval="False"/>
-    <field name="header_spacing">0</field>
-    <field name="dpi">90</field>
-</record>
-endsnippet
 snippet cron "Cron job" b
 <record forcecreate="True" id="$2`!p snip.rv = "%s%s" % ("ir_cron_", t[1].lower().replace(' ', '_'))`" model="ir.cron">
     <field name="name">${1:Name}</field>

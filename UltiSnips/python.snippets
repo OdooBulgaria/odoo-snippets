@@ -26,14 +26,19 @@ snippet doc "Module top-level doc" b
 # this module contains the full copyright notices and license terms.
 $0
 endsnippet
-snippet __openerp__ "Odoo module manifest" b
+
+snippet "__openerp__|__oe|__oe__|__openerp|manifest" "Odoo module manifest" br
 {
     `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`summary`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${3:Summary}`!p snip.rv = get_quoting_style(snip)`,
     `!p snip.rv = get_quoting_style(snip)`version`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`8.0.0.1.0`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`author`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${4:Author}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`depends`!p snip.rv = get_quoting_style(snip)`: [`!p snip.rv = get_quoting_style(snip)`${5}`!p snip.rv = get_quoting_style(snip)`],
+    `!p snip.rv = get_quoting_style(snip)`author`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${2:Author}`!p snip.rv = get_quoting_style(snip)`,
+    `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$3`!p snip.rv = complete(t[3], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
+    `!p snip.rv = get_quoting_style(snip)`website`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`https://example.com/`!p snip.rv = get_quoting_style(snip)`,
+    `!p snip.rv = get_quoting_style(snip)`license`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`AGPL-3`!p snip.rv = get_quoting_style(snip)`,
+    `!p snip.rv = get_quoting_style(snip)`summary`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${4:Summary}`!p snip.rv = get_quoting_style(snip)`,
+    `!p snip.rv = get_quoting_style(snip)`depends`!p snip.rv = get_quoting_style(snip)`: [
+        `!p snip.rv = get_quoting_style(snip)`${5}`!p snip.rv = get_quoting_style(snip)`
+    ],
     `!p snip.rv = get_quoting_style(snip)`data`!p snip.rv = get_quoting_style(snip)`: [
         `!p snip.rv = get_quoting_style(snip)`$0`!p snip.rv = get_quoting_style(snip)`,
     ],
@@ -42,69 +47,6 @@ snippet __openerp__ "Odoo module manifest" b
 }
 endsnippet
 
-snippet __oe__ "Odoo module manifest" b
-{
-    `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`summary`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${3:Summary}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`version`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`8.0.0.1.0`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`author`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${4:Author}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`depends`!p snip.rv = get_quoting_style(snip)`: [`!p snip.rv = get_quoting_style(snip)`${5}`!p snip.rv = get_quoting_style(snip)`],
-    `!p snip.rv = get_quoting_style(snip)`data`!p snip.rv = get_quoting_style(snip)`: [
-        `!p snip.rv = get_quoting_style(snip)`$0`!p snip.rv = get_quoting_style(snip)`,
-    ],
-    `!p snip.rv = get_quoting_style(snip)`installable`!p snip.rv = get_quoting_style(snip)`: True,
-    `!p snip.rv = get_quoting_style(snip)`application`!p snip.rv = get_quoting_style(snip)`: False,
-}
-endsnippet
-
-snippet __oe "Odoo module manifest" b
-{
-    `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`summary`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${3:Summary}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`version`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`8.0.0.1.0`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`author`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${4:Author}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`depends`!p snip.rv = get_quoting_style(snip)`: [`!p snip.rv = get_quoting_style(snip)`${5}`!p snip.rv = get_quoting_style(snip)`],
-    `!p snip.rv = get_quoting_style(snip)`data`!p snip.rv = get_quoting_style(snip)`: [
-        `!p snip.rv = get_quoting_style(snip)`$0`!p snip.rv = get_quoting_style(snip)`,
-    ],
-    `!p snip.rv = get_quoting_style(snip)`installable`!p snip.rv = get_quoting_style(snip)`: True,
-    `!p snip.rv = get_quoting_style(snip)`application`!p snip.rv = get_quoting_style(snip)`: False,
-}
-endsnippet
-
-snippet __openerp "Odoo module manifest" b
-{
-    `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`summary`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${3:Summary}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`version`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`8.0.0.1.0`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`author`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${4:Author}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`depends`!p snip.rv = get_quoting_style(snip)`: [`!p snip.rv = get_quoting_style(snip)`${5}`!p snip.rv = get_quoting_style(snip)`],
-    `!p snip.rv = get_quoting_style(snip)`data`!p snip.rv = get_quoting_style(snip)`: [
-        `!p snip.rv = get_quoting_style(snip)`$0`!p snip.rv = get_quoting_style(snip)`,
-    ],
-    `!p snip.rv = get_quoting_style(snip)`installable`!p snip.rv = get_quoting_style(snip)`: True,
-    `!p snip.rv = get_quoting_style(snip)`application`!p snip.rv = get_quoting_style(snip)`: False,
-}
-endsnippet
-
-snippet manifest "Odoo module manifest" b
-{
-    `!p snip.rv = get_quoting_style(snip)`name`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${1:Name}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`category`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`$2`!p snip.rv = complete(t[2], ['Customer Relationship Management','Sales Management','Project Management','Knowledge Management','Warehouse Management','Manufacturing','Invoicing & Payments','Accounting & Finance','Purchase Management','Human Resources','Extra Tools','Marketing','Point of Sale','Advanced Reporting'])``!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`summary`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${3:Summary}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`version`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`8.0.0.1.0`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`author`!p snip.rv = get_quoting_style(snip)`: `!p snip.rv = get_quoting_style(snip)`${4:Author}`!p snip.rv = get_quoting_style(snip)`,
-    `!p snip.rv = get_quoting_style(snip)`depends`!p snip.rv = get_quoting_style(snip)`: [`!p snip.rv = get_quoting_style(snip)`${5}`!p snip.rv = get_quoting_style(snip)`],
-    `!p snip.rv = get_quoting_style(snip)`data`!p snip.rv = get_quoting_style(snip)`: [
-        `!p snip.rv = get_quoting_style(snip)`$0`!p snip.rv = get_quoting_style(snip)`,
-    ],
-    `!p snip.rv = get_quoting_style(snip)`installable`!p snip.rv = get_quoting_style(snip)`: True,
-    `!p snip.rv = get_quoting_style(snip)`application`!p snip.rv = get_quoting_style(snip)`: False,
-}
-endsnippet
 snippet data "Odoo manifest data key" b
 `!p snip.rv = get_quoting_style(snip)`data`!p snip.rv = get_quoting_style(snip)`: [
     `!p snip.rv = get_quoting_style(snip)`$0`!p snip.rv = get_quoting_style(snip)`,
@@ -147,17 +89,13 @@ ${1:field} = fields.Date(
     help=`!p snip.rv = get_quoting_style(snip)``!p snip.rv = get_quoting_style(snip)`$0,
 )
 endsnippet
-snippet int "Integer field" b
+
+snippet "int(?:eger)?" "Integer field" br
 ${1:field} = fields.Integer(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,$0
 )
 endsnippet
 
-snippet integer "Integer field" b
-${1:field} = fields.Integer(
-    string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,$0
-)
-endsnippet
 snippet float "Float field" b
 from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.addons import decimal_precision as dp$0
 ${2:field} = fields.Float(
@@ -232,8 +170,7 @@ def _onchange_$1(self):
 	self.${2:other} = $0
 endsnippet
 
-
-snippet constrain "Python constrain" b
+snippet "constrain(?:[ts])?" "Python constrain" br
 from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])` import _, api, exceptions$0
 
 @api.multi
@@ -244,31 +181,7 @@ def _check_$2(self):
             raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${4:Error}`!p snip.rv = get_quoting_style(snip)`))
 endsnippet
 
-snippet constraint "Python constrain" b
-from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])` import _, api, exceptions$0
-
-@api.multi
-@api.constrains(`!p snip.rv = get_quoting_style(snip)`${2:field}`!p snip.rv = get_quoting_style(snip)`)
-def _check_$2(self):
-    for rec in self:
-        if rec.$2 == ${3:value}:
-            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${4:Error}`!p snip.rv = get_quoting_style(snip)`))
-endsnippet
-
-snippet constrains "Python constrain" b
-from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])` import _, api, exceptions$0
-
-@api.multi
-@api.constrains(`!p snip.rv = get_quoting_style(snip)`${2:field}`!p snip.rv = get_quoting_style(snip)`)
-def _check_$2(self):
-    for rec in self:
-        if rec.$2 == ${3:value}:
-            raise exceptions.ValidationError(_(`!p snip.rv = get_quoting_style(snip)`${4:Error}`!p snip.rv = get_quoting_style(snip)`))
-endsnippet
-
-
-
-snippet nameget "name_get() function" b
+snippet "name_?get" "name_get() function" br
 @api.multi
 def name_get(self):
     result = []
@@ -276,16 +189,6 @@ def name_get(self):
         result.append((rec.id, u`!p snip.rv = get_quoting_style(snip)`${1:%s %s}`!p snip.rv = get_quoting_style(snip)` % (${2:rec.id, rec.name})))$0
     return result
 endsnippet
-
-snippet name_get "name_get() function" b
-@api.multi
-def name_get(self):
-    result = []
-    for rec in self:
-        result.append((rec.id, u`!p snip.rv = get_quoting_style(snip)`${1:%s %s}`!p snip.rv = get_quoting_style(snip)` % (${2:rec.id, rec.name})))$0
-    return result
-endsnippet
-
 
 snippet model "New model" b
 class $2`!p snip.rv = ''.join(map(lambda w: w.title(), t[1].split('.')))`(models.Model):
@@ -348,37 +251,8 @@ def ${1:method}(self, ${2:args}):
 	self.ensure_one()
 	$0
 endsnippet
-snippet test_tx "Odoo transaction test case" b
-from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.tests import common
 
-
-class Test${2:Foo}(common.TransactionCase):
-
-    def test_${3:bar}(self):
-        $0
-endsnippet
-
-snippet testtx "Odoo transaction test case" b
-from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.tests import common
-
-
-class Test${2:Foo}(common.TransactionCase):
-
-    def test_${3:bar}(self):
-        $0
-endsnippet
-
-snippet tx_test "Odoo transaction test case" b
-from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.tests import common
-
-
-class Test${2:Foo}(common.TransactionCase):
-
-    def test_${3:bar}(self):
-        $0
-endsnippet
-
-snippet txtest "Odoo transaction test case" b
+snippet "testtx|test_tx|tx_test|txtest" "Odoo transaction test case" br
 from $1`!p snip.rv = complete(t[1], ['odoo','openerp'])`.tests import common
 
 
