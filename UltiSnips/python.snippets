@@ -61,6 +61,12 @@ snippet demo "Odoo manifest demo key" b
 endsnippet
 
 
+snippet qweb "Odoo manifest QWeb key" b
+`!p snip.rv = get_quoting_style(snip)`qweb`!p snip.rv = get_quoting_style(snip)`: [
+    `!p snip.rv = get_quoting_style(snip)`static/src/xml/${1:*}.xml`!p snip.rv = get_quoting_style(snip)`,$0
+],
+endsnippet
+
 snippet bool "Boolean field" b
 ${1:field} = fields.Boolean(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,$0
