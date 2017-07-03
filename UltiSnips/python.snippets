@@ -47,11 +47,19 @@ snippet "__openerp__|__oe|__oe__|__openerp|manifest" "Odoo module manifest" br
 }
 endsnippet
 
+
 snippet data "Odoo manifest data key" b
 `!p snip.rv = get_quoting_style(snip)`data`!p snip.rv = get_quoting_style(snip)`: [
     `!p snip.rv = get_quoting_style(snip)`$0`!p snip.rv = get_quoting_style(snip)`,
 ],
 endsnippet
+
+snippet demo "Odoo manifest demo key" b
+`!p snip.rv = get_quoting_style(snip)`demo`!p snip.rv = get_quoting_style(snip)`: [
+    `!p snip.rv = get_quoting_style(snip)`$0`!p snip.rv = get_quoting_style(snip)`,
+],
+endsnippet
+
 
 snippet bool "Boolean field" b
 ${1:field} = fields.Boolean(
