@@ -1,4 +1,15 @@
+global !p
+def build_group_name(model, group, sep='_', title=False):
+    group = group.strip() or 'no_group'
+    if group.startswith('group_'):
+        group = group[len('group_'):]
+    parts = '_'.join((model, group)).split('_')
+    if title:
+        parts = [p.title() for p in parts]
+    return sep.join(parts)
+endglobal
+
 snippet "ima|irma|model_access|access" "ir.model.access CSV snippet" br
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_`!p snip.rv = '_'.join((t[1], t[3].replace('group_', '', 1)))`,`!p snip.rv = ' '.join(map(str.title, (t[1] + '_' + t[3].replace('group_', '', 1)).split('_')))`,model_${1},${2:module}.${3:group},${4:0},${5:0},${6:0},${7:0}$0
+access_`!p snip.rv = build_group_name(t[1], t[3])`,`!p snip.rv = build_group_name(t[1], t[3], sep=' ', title=True)`,model_${1},${2:module}`!p snip.rv = '.' if t[3].strip() else ''`${3:group},${4:0},${5:0},${6:0},${7:0}$0
 endsnippet
