@@ -107,6 +107,10 @@ snippet "gr(?:oup)?" "Group tag" br
 </group>
 endsnippet
 
+snippet "bu?t?to?n" "Button" br
+<button string="${1:${VISUAL}}" type="$2`!p snip.rv = complete(t[2], ['action', 'object', 'workflow'])`" name="${3:`!p snip.rv = "%s%s" % ("", t[1].lower().replace(' ', '_'))`}" class="${4:oe_highlight}" attrs="{'invisible': [${5}], 'readonly': [${6}]}}" states="$7" context="${8:{}}" confirm="$9"/>$0
+endsnippet
+
 snippet field "View field tag"
 <field name="$1"/>$0
 endsnippet
