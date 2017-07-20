@@ -18,7 +18,10 @@ def complete(t, opts):
 
 def cleanup_field_string(t):
     return re.sub(r'(id|ids)$', '', t).replace('_', ' ').rstrip(' ').title()
+
 endglobal
+
+
 
 snippet doc "Module top-level doc" b
 # -*- coding: utf-8 -*-
@@ -274,4 +277,26 @@ class Test${2:Foo}(common.TransactionCase):
 
     def test_${3:bar}(self):
         $0
+endsnippet
+
+snippet domain "Domain list snippet"
+[
+    ('${1}', '$2`!p snip.rv = complete(t[2], ['=','!=','>','>=','<','<=','=?','=like','like','not like','ilike','not ilike','=ilike','in','not in','child_of'])`', `!p snip.rv = '(' if t[2] in ('in', 'not in') else ''`$3`!p snip.rv = ')' if t[2] in ('in', 'not in') else ''`),$0
+]
+endsnippet
+
+snippet "\.search\(" "Search method snippet" r
+.search([
+    ('${1}', '$2`!p snip.rv = complete(t[2], ['=','!=','>','>=','<','<=','=?','=like','like','not like','ilike','not ilike','=ilike','in','not in','child_of'])`', `!p snip.rv = '(' if t[2] in ('in', 'not in') else ''`$3`!p snip.rv = ')' if t[2] in ('in', 'not in') else ''`),$0
+], offset=${4:0}, limit=${5:None}, order=${6:None})
+endsnippet
+
+snippet "\.search_count\(" "Search count snippet" r
+.search_count([
+    ('${1}', '$2`!p snip.rv = complete(t[2], ['=','!=','>','>=','<','<=','=?','=like','like','not like','ilike','not ilike','=ilike','in','not in','child_of'])`', `!p snip.rv = '(' if t[2] in ('in', 'not in') else ''`$3`!p snip.rv = ')' if t[2] in ('in', 'not in') else ''`),$0
+])
+endsnippet
+
+snippet "ref" "Ref snippet" r
+self.env.ref('${1:${VISUAL}}', raise_if_not_found=${2:True})
 endsnippet
