@@ -7,7 +7,8 @@ def complete(t, opts):
 	return '({0:s})'.format('|'.join(opts))
 endglobal
 
-snippet xml "Odoo v8/OpenERP XML file" b
+
+snippet xml8 "Odoo v8/OpenERP XML file" b
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
@@ -124,7 +125,7 @@ snippet context_eval "View evaluated context tag" b
 endsnippet
 
 snippet domain "View domain field tag" b
-<field name="domain">[${1:context}]</field>$0
+<field name="domain">[('$1', '$2`!p snip.rv = complete(t[2], ['=', '!=', '>', '>=', '<', '<=', '=?', '=like', 'like', 'not like', 'ilike', 'not ilike', '=ilike', 'in', 'not in', 'child_of'])`', '$3')$0]</field>
 endsnippet
 
 snippet domain_eval "View evaluated domain tag" b
