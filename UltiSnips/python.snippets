@@ -121,6 +121,13 @@ ${2:field} = fields.Float(
 )
 endsnippet
 
+snippet monetary "Monetary field" b
+${2:field} = fields.Monetary(
+    string=`!p snip.rv = get_quoting_style(snip)`${3:`!p snip.rv = cleanup_field_string(t[2])`}`!p snip.rv = get_quoting_style(snip)`,
+    currency_field=`!p snip.rv = get_quoting_style(snip)`${4:currency_id}`!p snip.rv = get_quoting_style(snip)`,$0
+)
+endsnippet
+
 snippet binary "Binary field" b
 ${1:field} = fields.Binary(
     string=`!p snip.rv = get_quoting_style(snip)`${2:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,$0
@@ -142,7 +149,7 @@ ${1:field} = fields.Selection(
 endsnippet
 
 snippet related "Related field" b
-${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Binary','Boolean','Selection','Char','Date','Datetime','Text','Html','Integer','Float','Many2one','One2many','Many2many'])`(
+${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Binary','Boolean','Selection','Char','Date','Datetime','Text','Html','Integer','Float','Monetary','Many2one','One2many','Many2many'])`(
     related=`!p snip.rv = get_quoting_style(snip)`$3.$1`!p snip.rv = get_quoting_style(snip)`,
     string=`!p snip.rv = get_quoting_style(snip)`${4:`!p snip.rv = cleanup_field_string(t[1])`}`!p snip.rv = get_quoting_style(snip)`,
     store=False,$0
@@ -173,7 +180,7 @@ ${1:field} = fields.Many2many(
 endsnippet
 
 snippet compute "Compute field" b
-${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Binary','Boolean','Selection','Char','Date','Datetime','Text','Html','Integer','Float','Many2one','One2many','Many2many'])`(compute=`!p snip.rv = get_quoting_style(snip)`_compute_$1`!p snip.rv = get_quoting_style(snip)`)
+${1:field} = fields.$2`!p snip.rv = complete(t[2], ['Binary','Boolean','Selection','Char','Date','Datetime','Text','Html','Integer','Float','Monetary','Many2one','One2many','Many2many'])`(compute=`!p snip.rv = get_quoting_style(snip)`_compute_$1`!p snip.rv = get_quoting_style(snip)`)
 
 @api.depends('${3:field}')
 def _compute_$1(self):
